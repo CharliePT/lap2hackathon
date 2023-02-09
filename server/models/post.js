@@ -28,5 +28,14 @@ class Post {
     let response = await db.query("DELETE FROM post WHERE post_id = $1 RETURNING *;", [this.id]);
     return new Post(response.rows[0]);
   }
+  static async update(post, data) {
+    // const { title, content } = data;
+    const response = await db.query("UPDATE post SET content = $1 WHERE post_id = $2 RETURNING post;",
+        [ data.content, post.id ]);
+    if (response.rows.length != 1) {
+        throw new Error("Unable to update content.")
+    }
+    return new Post(response.rows[0]);
+}
 }
 module.exports = Post;

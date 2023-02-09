@@ -35,6 +35,19 @@ async function destroy (req, res) {
         res.status(404).json({"error": err.message})
     }
 };
+
+async function update (req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const data = req.body;
+        const post = await Post.getOneById(id);
+        const result = await Post.update(post, data);
+    } catch (error) {
+        res.status(404).json({'error': error.message})
+    }
+};
+
+
 module.exports = {
-    index, create, show, destroy
+    index, create, show, destroy, update
 }

@@ -35,7 +35,8 @@ class Post {
     if (response.rows.length != 1) {
         throw new Error("Unable to update content.")
     }
-    return new Post(response.rows[0]);
+    const updatedPost = await Post.getOneById(post.id);
+    return updatedPost;
 }
 }
 module.exports = Post;

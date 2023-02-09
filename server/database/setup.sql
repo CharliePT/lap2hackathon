@@ -6,3 +6,5 @@ CREATE TABLE post (
     content VARCHAR (1500) NOT NULL,
     PRIMARY KEY (post_id)
 );
+
+INSERT INTO post (title, content) VALUES ('My first post on my diary', 'I love flowers! They are so magical');

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "setup-db": "node database/setup.js",
     "start": "node index.js",
     "dev": "nodemon -L index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
